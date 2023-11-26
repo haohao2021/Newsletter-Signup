@@ -11,7 +11,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", function(req, res){
-  res.sendFile(__dirname + "/signup.html");
+  res.sendFile(process.cwd() + "/signup.html");
 });
 
 app.post("/", function(req, res){
@@ -44,9 +44,9 @@ app.post("/", function(req, res){
   const request = https.request(url, options, function(response){
     
     if (response.statusCode === 200){
-      res.sendFile(__dirname+"/success.html");
+      res.sendFile(process.cwd() +"/success.html");
     } else {
-      res.sendFile(__dirname+"/failure.html");
+      res.sendFile(process.cwd() +"/failure.html");
     }
     
     response.on("data", function(data){
